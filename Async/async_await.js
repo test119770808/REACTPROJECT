@@ -49,12 +49,12 @@ const getDog = async () => {
 }
 
 const getRabbit = async () => {
-  await sleep(1000);
+  await sleep(500);
   return '토끼';
 }
 
 const getTurtle = async () => {
-  await sleep(1000);
+  await sleep(2000);
   return '거북이';
 }
 
@@ -72,10 +72,28 @@ async function process2() {
 
 async function process3() {
   const start = Date.now();
-  const results = await Promise.all([getDog(), getRabbit(),getTurtle()]);
-  console.log(results);
+  // Promise.all 을 이용한 동시 처리 ... 
+  //   특징은 하나라도 실패하면 전체 실패한 것으로 간주함.
+  // const results = await Promise.all([getDog(), getRabbit(),getTurtle()]);
+  const [dog, rabbit, turtle] = await Promise.all([getDog(), getRabbit(),getTurtle()]);
+  console.log(dog);
+  console.log(rabbit);
+  console.log(turtle);
   const end = Date.now();
   console.log(end - start);
 }
 
-process3();
+// process3();
+// Promise.race : 여러개의 프로미스를 등록하고 실행시 
+//        가장 빨리 끝난 것 하나만 결과값으로 가져옴.
+//    특징은 가장 먼저 성공하기 전에 먼저 끝난 Promise가 
+//    실패하면 실패로 간주합니다. 
+async function process4() {
+  const first = await Promise.race([
+    getDog(),
+    getRabbit(), 
+    getTurtle()
+  ]);
+  console.log(first)
+}
+process4();
