@@ -20,4 +20,14 @@ console.log(!'');
 console.log(!NaN);      //NaN -> Not a Number 
                         //문자열을 숫자로 변환때 parseInt() 
 
+// truthy 값
+console.log(!3);
+console.log(!'hello');
+console.log(!['array?']);
+console.log(![]);
+console.log(!{value: 1});
 
+const value = {a : 1};
+const truthy = value ? true : false;
+console.log('truthy? : '+truthy);
+console.log('!truthy? : '+!truthy);
