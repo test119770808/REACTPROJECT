@@ -5,11 +5,14 @@ const EventComponent2 = () => {
   const [form, setForm] = useState({name: '',topic: ''}); // 객체 state
 
   let handleChange = (e) => {
-
+    const copy = {...form, [e.target.name]: e.target.value}; 
+    //spread문법으로 복사 후 키 수정
+    setForm(copy); //state 변경
   }
 
   let handleClick = () => {
-    
+    alert(`결과 : ${form.name} 님의 할일 : ${form.topic}`)
+    setForm({name:'', topic:''}); //state변경
   }
   return(
     <div>

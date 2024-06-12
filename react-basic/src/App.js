@@ -9,6 +9,7 @@ import MyComponent2 from './useState/MyComponent2';
 import EventComponent from './Event/EventComponent';
 import InputSample from './Event/InputSample';
 import EventComponent2 from './Event/EventComponent2';
+import UserList from './Array/UserList';
 
 function App() {
 
@@ -24,15 +25,17 @@ function App() {
   return (
     <>
       {/*2nd Day : useState 테스트 */}
-      <StateComponent />
+      {/* <StateComponent />
       <MyComponent2 name={'홍길동'} age={20} />
       <Counter />
-      <hr />
+      <hr /> */}
       {/* 2nd Day : event */}
-      <EventComponent />
+      {/* <EventComponent />
       <EventComponent2 />
       <InputSample />
-      
+      <hr /> */}
+      {/* 2nd Day : 컴포넌트 배열 */}
+      <UserList />
 
 
       {/* 1st Day :  */}
