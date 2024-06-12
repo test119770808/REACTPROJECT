@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, { Fragment } from 'react';
+import React, { Fragment, useRef } from 'react';
 import Wrapper from './Wrapper';
 import PropTypes from 'prop-types';  // prop 타입 검증을 모듈... 
 import StateComponent from './useState/StateTest';
@@ -12,6 +12,7 @@ import EventComponent2 from './Event/EventComponent2';
 import UserList from './Array/UserList';
 import ArrayKey from './Array/ArrayKey';
 import InputSample2 from './Array/InputSample2';
+import CreateUser from './Array/CreateUser';
 
 function App() {
 
@@ -42,6 +43,18 @@ function App() {
     }
   ];
 
+  // useRef를 이용한 컴포넌트에서 사용할 변수 지정
+  // - useRef로 관리하는 변수는 값이 바뀐다고해서 컴포넌트가 리렌더링되지 않음
+  // - 때문에 useRef로 관리하고 있는 변수는 설정 후 바로 조회 가능함. 
+  // - setTimeout, setInterval 을 통해서 만들어진 id
+  // - 외부 라이브러리를 사용하여 생성된 인스턴스
+  // - scroll 위치
+  const nextId = useRef(4);  
+  const onCreate = () => {
+    // 나중에 구현 할 배열에 항목 추가 로직... 
+    nextId.current += 1;   // onCreate가 동작하면, useRef에 현재값에 +1 처리
+  }
+
   return (
     <>
       {/*2nd Day : useState 테스트 */}
@@ -55,9 +68,13 @@ function App() {
       <InputSample />
       <hr /> */}
       {/* 2nd Day : 컴포넌트 배열 */}
-      <UserList users={users} />
-      <ArrayKey />
-      <InputSample2 />
+      {/* <ArrayKey />
+      <InputSample2 /> */}
+      <hr />
+      <CreateUser />
+      <hr />
+      <UserList users={users} /> {/* 등록 사용자 출력 */}
+
 
 
       {/* 1st Day :  */}
