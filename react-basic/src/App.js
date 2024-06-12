@@ -10,6 +10,8 @@ import EventComponent from './Event/EventComponent';
 import InputSample from './Event/InputSample';
 import EventComponent2 from './Event/EventComponent2';
 import UserList from './Array/UserList';
+import ArrayKey from './Array/ArrayKey';
+import InputSample2 from './Array/InputSample2';
 
 function App() {
 
@@ -36,6 +38,8 @@ function App() {
       <hr /> */}
       {/* 2nd Day : 컴포넌트 배열 */}
       <UserList />
+      <ArrayKey />
+      <InputSample2 />
 
 
       {/* 1st Day :  */}
