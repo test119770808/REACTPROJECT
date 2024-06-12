@@ -3,6 +3,8 @@ import './App.css';
 import React, { Fragment } from 'react';
 import Wrapper from './Wrapper';
 import PropTypes from 'prop-types';  // prop 타입 검증을 모듈... 
+import StateComponent from './useState/StateTest';
+import Counter from './useState/Counter';
 
 function App() {
 
@@ -17,15 +19,22 @@ function App() {
 
   return (
     <>
-      <Wrapper>
+      {/*2nd Day : useState 테스트 */}
+      <StateComponent />
+      <hr />
+      <Counter />
+
+
+      {/* 1st Day :  */}
+      {/* <Wrapper>
         <MyComponent name={"홍길동"} age={20} email={"aaa@bbb.com"} isSpecial />
         <div className='test-box'>
           <WelcomeClass name="Cahal" />
           <WelcomeFunction name={name} />
-          <br />  {/* or <br></br>  태그는 닫아야 합니다.*/}
-        </div>
-        <div style={style}>Hello World!! </div> {/* 하나의 태그로 묶여야 합니다....  */}
-      </Wrapper>
+          <br /> */}  {/* or <br></br>  태그는 닫아야 합니다.*/}
+      {/*   </div>
+        <div style={style}>Hello World!! </div> */} {/* 하나의 태그로 묶여야 합니다....  */}
+      {/* </Wrapper> */}
     </>
   );
 }
@@ -44,7 +53,13 @@ class WelcomeClass extends React.Component {
 }
 
 // 화살표 함수를 이용한 컴포넌트
-const MyComponent = ({name, age, addr='서울시 신촌2', email, isSpecial}) => {
+const MyComponent = (
+  { name, 
+    age, 
+    addr='서울시 신촌2',  //구조화된 할당을 통한 기본값 설정. 
+    email, 
+    isSpecial}
+) => {  //isSpecial을 통한 조건부 랜더링
   return (
     <>
       { isSpecial &&  // 3항 연산식
