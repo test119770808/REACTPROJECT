@@ -5,6 +5,10 @@ import Wrapper from './Wrapper';
 import PropTypes from 'prop-types';  // prop 타입 검증을 모듈... 
 import StateComponent from './useState/StateTest';
 import Counter from './useState/Counter';
+import MyComponent2 from './useState/MyComponent2';
+import EventComponent from './Event/EventComponent';
+import InputSample from './Event/InputSample';
+import EventComponent2 from './Event/EventComponent2';
 
 function App() {
 
@@ -21,8 +25,14 @@ function App() {
     <>
       {/*2nd Day : useState 테스트 */}
       <StateComponent />
-      <hr />
+      <MyComponent2 name={'홍길동'} age={20} />
       <Counter />
+      <hr />
+      {/* 2nd Day : event */}
+      <EventComponent />
+      <EventComponent2 />
+      <InputSample />
+      
 
 
       {/* 1st Day :  */}
