@@ -24,6 +24,24 @@ function App() {
     padding: '1rem'
   }
 
+  const users = [
+    {
+      id: 1,
+      username: '홍길동',
+      email: 'hong@naver.com'
+    },
+    {
+      id: 2,
+      username: '이순신',
+      email: 'leeSS@naver.com'
+    },
+    {
+      id: 3,
+      username: '유관순',
+      email: 'Youks@naver.com'
+    }
+  ];
+
   return (
     <>
       {/*2nd Day : useState 테스트 */}
@@ -37,7 +55,7 @@ function App() {
       <InputSample />
       <hr /> */}
       {/* 2nd Day : 컴포넌트 배열 */}
-      <UserList />
+      <UserList users={users} />
       <ArrayKey />
       <InputSample2 />
 

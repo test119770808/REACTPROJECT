@@ -10,25 +10,8 @@ function User({user}) {
 }
 
 
-function UserList() {
-  const users = [
-    {
-      id: 1,
-      username: '홍길동',
-      email: 'hong@naver.com'
-    },
-    {
-      id: 2,
-      username: '이순신',
-      email: 'leeSS@naver.com'
-    },
-    {
-      id: 3,
-      username: '유관순',
-      email: 'Youks@naver.com'
-    }
-  ];
-
+function UserList({users}) {
+  
   return (
     <div>
       {/* array.map() 함수를 이용한 컴포넌트 반복 */}
