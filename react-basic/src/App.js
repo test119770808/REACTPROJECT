@@ -1,6 +1,6 @@
 // import logo from './logo.svg';
 import './App.css';
-import React, { Fragment, useRef } from 'react';
+import React, { Fragment, useRef, useState } from 'react';
 import Wrapper from './Wrapper';
 import PropTypes from 'prop-types';  // prop 타입 검증을 모듈... 
 import StateComponent from './useState/StateTest';
@@ -25,7 +25,8 @@ function App() {
     padding: '1rem'
   }
 
-  const users = [
+  // users 배열객체를 useState로 변경... 
+  const [users, setUsers] = useState([
     {
       id: 1,
       username: '홍길동',
@@ -41,7 +42,22 @@ function App() {
       username: '유관순',
       email: 'Youks@naver.com'
     }
-  ];
+  ]);
+
+  // useState 입력값 처리를 위해서... 
+  const [inputs, setInputs] = useState({
+    username: '',
+    email: ''
+  });
+  const {username, email} = inputs;
+
+  const onChange = e => {
+    const {name, value} = e.target;
+    setInputs({
+      ...inputs,
+      [name]: value
+    });
+  }
 
   // useRef를 이용한 컴포넌트에서 사용할 변수 지정
   // - useRef로 관리하는 변수는 값이 바뀐다고해서 컴포넌트가 리렌더링되지 않음
@@ -52,6 +68,20 @@ function App() {
   const nextId = useRef(4);  
   const onCreate = () => {
     // 나중에 구현 할 배열에 항목 추가 로직... 
+    const user = {
+      id: nextId.current,  //현재 useRef로 설정된 값을 호출
+      username,
+      email
+    };
+    // 추가
+    setUsers([...users,user]);
+
+    // 입력값 정리
+    setInputs({
+      username: '',
+      email: ''
+    });
+
     nextId.current += 1;   // onCreate가 동작하면, useRef에 현재값에 +1 처리
   }
 
@@ -71,7 +101,12 @@ function App() {
       {/* <ArrayKey />
       <InputSample2 /> */}
       <hr />
-      <CreateUser />
+      <CreateUser 
+        username={username}
+        email={email}
+        onChange={onChange}
+        onCreate={onCreate}
+      />
       <hr />
       <UserList users={users} /> {/* 등록 사용자 출력 */}
 
