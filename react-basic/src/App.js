@@ -107,14 +107,28 @@ function App() {
   },[users]);
 
   // useCallback()을 이용한 함수 재사용 처리...  
-  const onToggle = useCallback(id => {
+  // const onToggle = useCallback(id => {
+  //   setUsers(
+  //     users.map(user => 
+  //       user.id === id ? {...user, active: !user.active} : user
+  //     )
+  //   );
+  // },[users]);
+  // useCallback과 같은 기능을 useMemo()로 구현.... 
+  const onToggle = useMemo(id => id => {
     setUsers(
-      users.map(user => 
+      users.map(user =>
         user.id === id ? {...user, active: !user.active} : user
       )
     );
-  },[users]);
-
+  }, [users]);
+  // const onToggle = id => {
+  //   setUsers(
+  //     users.map(user => 
+  //       user.id === id ? {...user, active: !user.active} : user
+  //     )
+  //   );
+  // }
   
   // useMemo --- input으로 생기는 리렌더링에는 실행하지 않아요.
   // const count = countActiveUsers(users); 인 경우에는 리렌더링 시에 

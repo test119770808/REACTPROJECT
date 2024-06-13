@@ -1,7 +1,7 @@
 import React, { useEffect } from "react";
 
 // User 컴포넌트
-function User({user, onRemove, onToggle}) {
+const User = React.memo(function User({user, onRemove, onToggle}) {
   /* 
     마운트 시에 하는 작업들...  
     1. props로 받은 값을 컴포넌트의 로컬 상태로 설정
@@ -56,7 +56,7 @@ function User({user, onRemove, onToggle}) {
         <button onClick={() => onRemove(user.id)}>삭제</button>
     </div>
   );
-}
+});
 
 
 function UserList({users, onRemove, onToggle}) {
@@ -78,4 +78,4 @@ function UserList({users, onRemove, onToggle}) {
     </div>
   );
 }
-export default UserList;
+export default React.memo(UserList);
