@@ -1,46 +1,49 @@
 // import logo from './logo.svg';
 import './App.css';
 import React, { Fragment, useRef, useState } from 'react';
-import Wrapper from './Wrapper';
+// import Wrapper from './Wrapper';
 import PropTypes from 'prop-types';  // prop 타입 검증을 모듈... 
-import StateComponent from './useState/StateTest';
-import Counter from './useState/Counter';
-import MyComponent2 from './useState/MyComponent2';
-import EventComponent from './Event/EventComponent';
-import InputSample from './Event/InputSample';
-import EventComponent2 from './Event/EventComponent2';
+// import StateComponent from './useState/StateTest';
+// import Counter from './useState/Counter';
+// import MyComponent2 from './useState/MyComponent2';
+// import EventComponent from './Event/EventComponent';
+// import InputSample from './Event/InputSample';
+// import EventComponent2 from './Event/EventComponent2';
 import UserList from './Array/UserList';
-import ArrayKey from './Array/ArrayKey';
-import InputSample2 from './Array/InputSample2';
+// import ArrayKey from './Array/ArrayKey';
+// import InputSample2 from './Array/InputSample2';
 import CreateUser from './Array/CreateUser';
 
 function App() {
 
-  const name = 'React';
+  // const name = 'React';
 
-  const style = {
-    backgroundColor: 'red',  //카멜표기법... 
-    color: 'white',
-    fontSize: 24,
-    padding: '1rem'
-  }
+  // const style = {
+  //   backgroundColor: 'red',  //카멜표기법... 
+  //   color: 'white',
+  //   fontSize: 24,
+  //   padding: '1rem'
+  // }
 
   // users 배열객체를 useState로 변경... 
   const [users, setUsers] = useState([
     {
       id: 1,
       username: '홍길동',
-      email: 'hong@naver.com'
+      email: 'hong@naver.com',
+      active: true
     },
     {
       id: 2,
       username: '이순신',
-      email: 'leeSS@naver.com'
+      email: 'leeSS@naver.com',
+      active: false
     },
     {
       id: 3,
       username: '유관순',
-      email: 'Youks@naver.com'
+      email: 'Youks@naver.com',
+      active: false
     }
   ]);
 
@@ -75,6 +78,7 @@ function App() {
     };
     // 추가
     setUsers([...users,user]);
+    // setUsers(users.concat(user)); 를 사용해됨.
 
     // 입력값 정리
     setInputs({
@@ -84,6 +88,22 @@ function App() {
 
     nextId.current += 1;   // onCreate가 동작하면, useRef에 현재값에 +1 처리
   }
+
+  // 사용자 삭제... 
+  const onRemove = id => {
+    // user.id가 파라미터로 일치하지 않는 원소만 추출해서 새로운 배열 만듬.
+    // user.id가 파라미터로 전달된 id인 것만 제거한 새로운 배열 생성
+    setUsers(users.filter(user => user.id !== id));
+  };
+
+  //
+  const onToggle = id => {
+    setUsers(
+      users.map(user => 
+        user.id === id ? {...user, active: !user.active} : user
+      )
+    );
+  };
 
   return (
     <>
@@ -108,7 +128,7 @@ function App() {
         onCreate={onCreate}
       />
       <hr />
-      <UserList users={users} /> {/* 등록 사용자 출력 */}
+      <UserList users={users} onRemove={onRemove} onToggle={onToggle}/> {/* 등록 사용자 출력 */}
 
 
 
