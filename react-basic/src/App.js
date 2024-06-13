@@ -13,6 +13,8 @@ import UserList from './Array/UserList';
 // import ArrayKey from './Array/ArrayKey';
 // import InputSample2 from './Array/InputSample2';
 import CreateUser from './Array/CreateUser';
+import HookEffect from './Hooks/HookEffect';
+import HookRef from './Hooks/HookRef';
 
 function App() {
 
@@ -130,7 +132,12 @@ function App() {
       <hr />
       <UserList users={users} onRemove={onRemove} onToggle={onToggle}/> {/* 등록 사용자 출력 */}
 
-
+      <hr />
+      {/* 3rd Day : useEffect */}
+      <HookEffect />
+      <hr />
+      {/* 3rd Day : useRef */}
+      <HookRef />
 
       {/* 1st Day :  */}
       {/* <Wrapper>
