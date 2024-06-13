@@ -27,14 +27,14 @@ function User({user, onRemove, onToggle}) {
       호출됩니다. 의존성 배열에 특정 값이 있으면 언마운트 시에도 호출, 값이 바뀌기
       직전에도 호출됩니다.
   */
-  useEffect(() => {
-    console.log('user값이 설정됨');
-    console.log(user)
-    return () => {
-      console.log('user가 바뀌기 전...');
-      console.log(user);
-    };
-  },[user]); 
+  // useEffect(() => {
+  //   console.log('user값이 설정됨');
+  //   console.log(user)
+  //   return () => {
+  //     console.log('user가 바뀌기 전...');
+  //     console.log(user);
+  //   };
+  // },[user]); 
   /* 
     만약에 useEffect()안에서 사용하는 상태(state), props가 있다면. 
     useEffect()의 deps(의존성 배열)에 넣어주세요. 이게 규칙.
