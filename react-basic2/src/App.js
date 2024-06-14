@@ -4,6 +4,8 @@ import './App.css';
 import CreateUser from './Hooks/CreateUser';
 import UserList from './Hooks/UserList';
 import useInputs from './Hooks/useInputs';
+/* 모듈 디자인 로드 */
+import styled from './css/App.module.css'; //css모듈 디자인
 
 function countActiveUsers(users) {
   console.log('활성 사용자 수를 세는 중....');
@@ -129,6 +131,11 @@ function App() {
 
   return (
     <>
+      <section className={styled.app_wrap}>
+        <p className='title'>CSS모듈 디자인!</p>
+      </section>
+      <br/>
+      <hr />
       {/* <Counter /> */}
       <CreateUser 
         username={username} 

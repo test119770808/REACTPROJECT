@@ -1,0 +1,17 @@
+.app_wrap {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  background-color: #fff;
+  height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+/* 전역선택자로 이름정하기 */
+:global .title {
+  color: pink;
+  font-weight: 900;
+}
