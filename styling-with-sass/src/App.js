@@ -15,7 +15,7 @@ function App() {
   return (
     <div className="App">
       {/* Sass 테스트 */}
-      {/* <div className='button'>
+      <div className='button'>
         <Button size="large" onClick={() => alert('클릭했어요!!!')}>Button</Button>
         <Button>Button</Button>
         <Button size={"small"}>Button</Button>
@@ -39,7 +39,7 @@ function App() {
         <Button size="large" color="blue" fullWidth>Button</Button>
         <Button size="large" color="gray" fullWidth>Button</Button>
         <Button size="large" color="pink" fullWidth>Button</Button>
-      </div> */}
+      </div>
 
       {/* CSS Module 테스트 */}
       {/* <Box /> */}
