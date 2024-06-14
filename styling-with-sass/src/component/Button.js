@@ -7,12 +7,15 @@ import './Button.scss';
 //3. 버튼 색상 설정하기... (blue, gray, pink)
 //4. outline 옵션 : 버튼에서 테두리만 보여지게 설정
 //5. fullWidth : 버튼이 전체 너비를 차지하도록 구현
-function Button({children, size, color, outline, fullWidth}) {
+function Button({children, size, color, outline, fullWidth, ...rest }) {
   // className='Button large'
   // ['Button',size].join(' ')  or `Button ${size}`
   // 클래스에 관련된 처리를 쉽게하는 라이브러리.... classnames
   return (
-    <button className={classNames('Button', size, color, {outline, fullWidth})}>
+    <button 
+      className={classNames('Button', size, color, {outline, fullWidth})}
+      {...rest}
+    >
       {children}
     </button>
   );
