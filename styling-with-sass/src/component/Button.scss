@@ -1,4 +1,26 @@
 $blue: #228be6;   //주석-> 변수 선언부분... 
+$gray: #495057;
+$pink: #f06595;
+
+// Sass에서 가장 많이 사용되는 기능(@mixin). 핵심은 간결성~!
+@mixin button-color($color) {
+  background: $color;
+  &:hover {
+    background: lighten($color: $color, $amount: 10%);
+  }
+  &:active {
+    background: darken($color: $color, $amount: 10%);
+  }
+  &.outline {
+    color: $color;
+    background: none;
+    border: 1px solid $color;
+    &:hover {
+      background: $color;
+      color: white;
+    }
+  }
+}
 
 .Button {
   display: inline-flex;
@@ -10,16 +32,51 @@ $blue: #228be6;   //주석-> 변수 선언부분...
   border: none;
   cursor: pointer;
 
-  height: 2.25rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
-  font-size: 1rem;
+  // 사이즈 관리 : large, medium, small
 
-  background: $blue;  //주석 사용
-  &:hover {
-    background: lighten($color: $blue, $amount: 10%);
+  &.large {
+    height: 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1.25rem;
   }
-  &:active {
-    background: darken($color: $blue, $amount: 10%);
+
+  &.medium {
+    height: 2.25rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 1rem;
+  }
+
+  &.small {
+    height: 1.75rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    font-size: 0.875rem;
+  }
+
+  &.blue {
+    @include button-color($blue)
+  }
+  
+  &.gray {
+    @include button-color($gray)
+  }
+
+  &.pink {
+    @include button-color($pink)
+  }
+
+  & + & {
+    margin-left: 1rem;
+  }
+
+  &.fullWidth {
+    width: 100%;
+    justify-content: center;
+    & + & {
+      margin-left: 0;
+      margin-top: 1rem;
+    } 
   }
 }

@@ -4,6 +4,9 @@
   margin-top: 4rem;
   border: 1px solid black;
   padding: 1rem;
+  .button + .button {
+    margin-top: 1rem;
+  }
 }
 
 .App-logo {
