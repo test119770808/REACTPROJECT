@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 import Button from "./Button";
 
 const fadeIn = keyframes`
@@ -11,6 +11,14 @@ const fadeIn = keyframes`
   }
 `;
 
+const fadeOut = keyframes`
+  from {
+    opacity: 1;
+  }
+  to {
+    opacity: 0;
+  }
+`;
 
 const slideUp = keyframes`
   from {
@@ -19,7 +27,16 @@ const slideUp = keyframes`
   to {
     transform: translateY(0px);
   }
-`
+`;
+
+const slideDown = keyframes`
+  from {
+    transform: translateY(0px);
+  }
+  to {
+    transform: translateY(200px);
+  }
+`;
 
 const DarkBackground = styled.div`
   position: fixed;
@@ -36,6 +53,14 @@ const DarkBackground = styled.div`
   animation-timing-fuction: ease-out;
   animation-name: ${fadeIn};
   animation-fill-mode: forwards;
+
+  /* props에 사라지는 옵션 disappear 확인 */
+  ${props =>
+    props.disappear && 
+    css`
+      animation-name: ${fadeOut};
+    `
+  }
 `;
 
 const DialogBlock = styled.div`
@@ -55,6 +80,14 @@ const DialogBlock = styled.div`
   animation-timing-fuction: ease-out;
   animation-name: ${slideUp};
   animation-fill-mode: forwards;
+
+  /* props에 사라지는 옵션 disappear 확인 */
+  ${props =>
+    props.disappear && 
+    css`
+      animation-name: ${slideDown};
+    `
+  }
 `;
 
 const ButtonGroup = styled.div`
@@ -85,18 +118,18 @@ function Dialog({
 
   useEffect(() => {
     // visible값이 true -> false가 되는 것을 감지
-    if (localVisible && !visible) {  // 
+    if (localVisible && !visible) {  
       setAnimate(true);
       setTimeout(() => setAnimate(false), 500);
     }
     setLocalVisible(visible);
   }, [localVisible, visible]);
 
-  if (!visible) return null;  //false일 때 실행... 
+  if (!animate && !localVisible) return null;  //false일 때 실행... 
 
   return(
-    <DarkBackground>
-      <DialogBlock>
+    <DarkBackground disappear={!visible}>
+      <DialogBlock disappear={!visible}>
         <h3>{title}</h3>
         <p>{children}</p>
         <ButtonGroup>
