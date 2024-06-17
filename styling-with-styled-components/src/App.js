@@ -4,6 +4,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import Circle from './styled-components/sample';
 import Button from './styled-components/Button';
 import Dialog from './styled-components/Dialog';
+import { useState } from 'react';
 
 
 /* function sample(texts, ...fns) {
@@ -34,6 +35,23 @@ const ButtonGroup = styled.div`
 `;
 
 function App() {
+
+  const [dialog, setDialog] = useState(false);
+
+  const onClick = () => {
+    setDialog(true);
+  };
+
+  const onConfirm = () => {
+    console.log('확인');
+    setDialog(false);
+  };
+
+  const onCancel = () => {
+    console.log('취소');
+    setDialog(false);
+  };
+
   return (
     <ThemeProvider  /* 웹 사이트 디자인 시에 메인색상을 지정 */
       theme={{       
@@ -76,13 +94,16 @@ function App() {
           <ButtonGroup>
             <Button fullWidth>Button</Button> 
             <Button color='gray' fullWidth>Button</Button>
-            <Button color='pink' fullWidth>Button</Button>
+            <Button color='pink' fullWidth onClick={onClick}>삭제</Button>
           </ButtonGroup>
         </AppBlock>
         <Dialog
           title="정말로 삭제하겠습니까?"
           confirmText='삭제'
           cancelText='취소'
+          onConfirm={onConfirm}
+          onCancel={onCancel}
+          visible={dialog}
         >
           데이터를 정말로 삭제하겠습니까?
         </Dialog>

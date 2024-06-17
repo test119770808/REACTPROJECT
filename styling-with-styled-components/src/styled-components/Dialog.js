@@ -1,6 +1,25 @@
-import React from "react";
-import styled from "styled-components";
+import React, { useEffect, useState } from "react";
+import styled, { keyframes } from "styled-components";
 import Button from "./Button";
+
+const fadeIn = keyframes`
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+`;
+
+
+const slideUp = keyframes`
+  from {
+    transform: translateY(200px);
+  }
+  to {
+    transform: translateY(0px);
+  }
+`
 
 const DarkBackground = styled.div`
   position: fixed;
@@ -12,6 +31,11 @@ const DarkBackground = styled.div`
   align-items: center;
   justify-content: center;
   background: rgba(0, 0, 0, 0.8);
+
+  animation-duration: 0.5s;
+  animation-timing-fuction: ease-out;
+  animation-name: ${fadeIn};
+  animation-fill-mode: forwards;
 `;
 
 const DialogBlock = styled.div`
@@ -26,6 +50,11 @@ const DialogBlock = styled.div`
   p {
     font-size: 1.125rem;
   }
+
+  animation-duration: 0.5s;
+  animation-timing-fuction: ease-out;
+  animation-name: ${slideUp};
+  animation-fill-mode: forwards;
 `;
 
 const ButtonGroup = styled.div`
@@ -34,7 +63,36 @@ const ButtonGroup = styled.div`
   justify-content: flex-end;
 `;
 
-function Dialog({title, children, confirmText = '확인', cancelText = '취소'}) {
+function Dialog({
+  title, 
+  children, 
+  confirmText = '확인', 
+  cancelText = '취소', 
+  onConfirm, 
+  onCancel, 
+  visible
+}) {
+
+  // Dialog가 사라지는 효과를 구현하기... 
+  // 이를 위해서 Dialog 컴포넌트에서는 2개의 로컬 상태를 관리해야 함. 
+  // 1. 트랜지션 효과를 보여주고 있는 중이라는 상태 : animate
+  // 2. 컴포넌트가 사라지는 시점의 지연 : localVisible
+  // 3. useEffect() -> visible 값이 true에서 false로 바뀌는 시점을 감지.
+  //          animate 값을 true, setTimeout 함수를 사용. 250ms 이후 false처리.
+
+  const [animate, setAnimate] = useState(false);
+  const [localVisible, setLocalVisible] = useState(visible);
+
+  useEffect(() => {
+    // visible값이 true -> false가 되는 것을 감지
+    if (localVisible && !visible) {  // 
+      setAnimate(true);
+      setTimeout(() => setAnimate(false), 500);
+    }
+    setLocalVisible(visible);
+  }, [localVisible, visible]);
+
+  if (!visible) return null;  //false일 때 실행... 
 
   return(
     <DarkBackground>
@@ -42,8 +100,8 @@ function Dialog({title, children, confirmText = '확인', cancelText = '취소'}
         <h3>{title}</h3>
         <p>{children}</p>
         <ButtonGroup>
-          <Button color='gray'>{cancelText}</Button>
-          <Button color='pink'>{confirmText}</Button>
+          <Button color='gray' onClick={onCancel}>{cancelText}</Button>
+          <Button color='pink' onClick={onConfirm}>{confirmText}</Button>
         </ButtonGroup>
       </DialogBlock>
     </DarkBackground>
