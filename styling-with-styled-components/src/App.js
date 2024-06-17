@@ -1,6 +1,6 @@
 /* import logo from './logo.svg'; */
-import styled from 'styled-components';
-import './App.css';
+import styled, { ThemeProvider } from 'styled-components';
+/* import './App.css'; */
 import Circle from './styled-components/sample';
 import Button from './styled-components/Button';
 
@@ -26,20 +26,50 @@ const AppBlock = styled.div`
   padding: 1rem;
 `;
 
+const ButtonGroup = styled.div`
+  & + & {
+    margin-top: 1rem;
+  }
+`;
 
 function App() {
   return (
-    <div className="App">
+    <ThemeProvider  /* 웹 사이트 디자인 시에 메인색상을 지정 */
+      theme={{       
+        palette: {
+          blue: '#228be6',  
+          gray: '#495057',
+          pink: '#f06595'
+        }
+      }}
+    >
+    {/* <div className="App"> */}
       {/* <Circle color='orange' huge/> */}
       {/* {sample`
         제목: ${props => props.title}
         내용: ${props => props.body}
       `} */}
       <AppBlock>  {/* 자식 컴포넌트를 둘러싸고 있는 div 컴포넌트 */}
-        <Button>Button</Button>
+        <ButtonGroup>
+          <Button size='large'>Button</Button>
+          <Button>Button</Button>
+          <Button size='small'>Button</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button color='gray' size='large'>Button</Button>
+          <Button color='gray'>Button</Button>
+          <Button color='gray' size='small'>Button</Button>
+        </ButtonGroup>
+        <ButtonGroup>
+          <Button color='pink' size='large'>Button</Button>
+          <Button color='pink'>Button</Button>
+          <Button color='pink' size='small'>Button</Button>
+        </ButtonGroup>
       </AppBlock>
-    </div>
+    {/* </div> */}
+    </ThemeProvider>
   );
 }
 
 export default App;
+
