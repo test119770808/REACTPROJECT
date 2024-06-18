@@ -1,5 +1,5 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import {MdDelete, MdDone} from 'react-icons/md'
 
 // 삭제
@@ -31,13 +31,37 @@ const TodoItemBlock = styled.div`
 
 // checkbox
 const CheckCircle = styled.div`
-
-`
+  width: 32px;
+  height: 32px;
+  border-radius: 16px;
+  border: 1px solid #ced4da;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 20px;
+  cursor: pointer;
+  ${props => 
+    props.done &&
+    css`
+      border: 1px solid #38d9a9;
+      color: #38d9a9;
+    `
+  }
+`;
 
 // text 영역
 const Text = styled.div`
-
-`
+  flex: 1;
+  font-size: 21px;
+  color: #495057;
+  ${props => 
+    props.done &&
+    css`
+      color: #ced4da;
+    `
+  }
+`;
 
 function TodoItem({id, done, text}){
   return(

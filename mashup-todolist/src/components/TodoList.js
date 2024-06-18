@@ -7,7 +7,6 @@ const TodoListBlock = styled.div`
   padding: 20px 32px;
   padding-bottom: 48px;
   overflow-y: auto;
-  background: gray; /* 확인용!!! */
 `;
 
 function TodoList() {
@@ -15,9 +14,9 @@ function TodoList() {
     <TodoListBlock>
       <TodoItem text="프로젝트 생성하기" done={true} />
       <TodoItem text="컴포넌트 스타일링하기" done={true} />
-      <TodoItem text="Contect 구현하기" done={true} />
-      <TodoItem text="각 기능구현하기" done={true} />
-      <TodoItem text="복습하기" done={true} />
+      <TodoItem text="Contect 구현하기" done={false} />
+      <TodoItem text="각 기능구현하기" done={false} />
+      <TodoItem text="복습하기" done={false} />
     </TodoListBlock>
   );
 }
