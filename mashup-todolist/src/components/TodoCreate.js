@@ -55,7 +55,7 @@ const InsertFormPositioner = styled.div`
   position: absolute;
 `;
 
-const InsertForm = styled.div`
+const InsertForm = styled.form`
   background: #f8f9fa;
   padding-left: 32px;
   padding-top: 32px;
@@ -91,9 +91,11 @@ function TodoCreate() {
 
   const dispatch = useTodoDispatch();
   const nextId = useTodoNextId();
+
   // 기능
   const onSubmit = e => {
     e.preventDefault();   // 새로고침 방지
+    console.log(e.target);
     dispatch({
       type: 'CREATE',
       todo: {
@@ -116,7 +118,8 @@ function TodoCreate() {
               autoFocus 
               placeholder="할 일을 입력 후, Enter를 누르세요"
               onChange={onChange}
-              value={value} 
+              value={value}
+              onKeyDown={(e) => console.log(e)}
             />
           </InsertForm>
         </InsertFormPositioner>
