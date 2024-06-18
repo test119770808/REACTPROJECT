@@ -1,6 +1,7 @@
 import React from "react";
 import styled, { css } from "styled-components";
 import {MdDelete, MdDone} from 'react-icons/md'
+import { useTodoDispatch } from "../TodoContext";
 
 // 삭제
 const Remove = styled.div`
@@ -64,14 +65,23 @@ const Text = styled.div`
 `;
 
 function TodoItem({id, done, text}){
+
+  // 기능... 
+  const dispatch = useTodoDispatch();
+  // 함수... 
+  const onToggle = () => dispatch({type:'TOGGLE', id});
+  const onRemove = () => dispatch({type:'REMOVE', id});
+
   return(
     <TodoItemBlock>
-    <CheckCircle done={done}>{done && <MdDone />}</CheckCircle>
-    <Text done={done}>{text}</Text>
-    <Remove>
+    <CheckCircle done={done} onClick={onToggle}>
+      {done && <MdDone />}
+    </CheckCircle>
+    <Text done={done} >{text}</Text>
+    <Remove onClick={onRemove}>
       <MdDelete />
     </Remove>
   </TodoItemBlock>
   );
 }
-export default TodoItem;
+export default React.memo(TodoItem);

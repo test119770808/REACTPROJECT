@@ -20,7 +20,7 @@ const initialTodos = [
   {
     id: 4,
     text: '기능구현하기...',
-    done: false
+    done: true
   },
   {
     id: 5,
@@ -65,16 +65,28 @@ export function TodoProvider({children}) {
   );
 }
 
-/* useContext에 직접 사용하는 대신에 useContext를 사용하는 Hook 만들어 
-내보내기*/
+/* useContext에 직접 사용하는 대신에 useContext를 사용하는 Hook 만들어 내보내기*/
+// 커스텀 훅 에러 처리... 
 export function useTodoState() {
-  return useContext(TodoStateContext);
+  const context = useContext(TodoStateContext);
+  if (!context) {
+    throw new Error('Cannot find TodoContextProvider');
+  }
+  return context;
 }
 
 export function useTodoDispatch() {
-  return useContext(TodoDispatchContext);
+  const context = useContext(TodoDispatchContext);
+  if (!context) {
+    throw new Error('Cannot find TodoContextProvider');
+  }
+  return context;
 }
 
 export function useTodoNextId() {
-  return useContext(TodoNextIdContext);
+  const context = useContext(TodoNextIdContext);
+  if (!context) {
+    throw new Error('Cannot find TodoContextProvider');
+  }
+  return context;
 }
