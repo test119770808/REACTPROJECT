@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer, useState } from 'react';
 import axios from 'axios';
 import useAsync from './useAsync';
+import { postsFetch, usePostsDispatch, usePostsState } from '../PostsContext';
 
 const Post = ({id, title, userId}) => {
   return (
@@ -85,9 +86,28 @@ function Posts() {
     postTest();
   }, []); */
 
-  const [state, refetch] = useAsync(postsFunction, []);
+  /* ContextAPI 를 활용해서 동작하게 만들어 주세요.... : PostsContext.js
+     createContext를 사용하여  PostsStateContext, PostsDispatchContext
+     1. reducer 생성
+     2. 초기값 설정
+     3. Context API생성
+     4. provider 생설 및 설정
+     5. useContext사용하여 불러오기... 
+  */
+  // const [state, refetch] = useAsync(postsFunction, []);
+  const state = usePostsState();
+  const dispatch = usePostsDispatch();
 
-  const {loading, posts, error} = state;
+  const {loading, posts, error} = state.posts;
+
+  console.log(loading, posts, error);
+
+  useEffect( () => {
+    postsFetch(dispatch);
+  }, [dispatch]);
+    
+  
+
   // console.log(posts);
   if (error) return (
     <div>
@@ -101,7 +121,7 @@ function Posts() {
 
   return (
     <div>
-      <button onClick={refetch} >다시불러오기</button>
+      <button   >다시불러오기</button>
       <hr/>
       {posts.map(post => (
         <Post key={post.id} id={post.id} title={post.title} userId={post.userId} />

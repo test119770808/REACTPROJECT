@@ -2,6 +2,7 @@ import React, {useState, useEffect} from 'react';
 import axios from 'axios';
 import './App.css';
 import Posts from './components/Posts';
+import { PostsProvider } from './PostsContext';
 
 function App() {
 
@@ -88,9 +89,9 @@ function App() {
   }
   return (
     <>
-    
-    <Posts />
-
+    <PostsProvider >
+      <Posts />
+    </PostsProvider>
     {/* <div className='App'>
       <h3>클릭시 fetch로 데이터 가져오기</h3>
       <button type='button' onClick={handleClick}>데이터로드</button>
