@@ -44,10 +44,10 @@ const Post = ({id, title, userId}) => {
       throw new Error(`Unhandled action type : ${action.type}`);
   }
 } */
-async function postsFunction() {
+/* async function postsFunction() {
   const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
   return response.data;
-}
+} */
 
 function Posts() {
 
@@ -100,15 +100,14 @@ function Posts() {
 
   const {loading, posts, error} = state.posts;
 
-  console.log(loading, posts, error);
-
   useEffect( () => {
     postsFetch(dispatch);
   }, [dispatch]);
-    
   
+  const fetchdata = () => {
+    postsFetch(dispatch);
+  }
 
-  // console.log(posts);
   if (error) return (
     <div>
       <h1>에러발생했습니다.</h1>
@@ -121,7 +120,7 @@ function Posts() {
 
   return (
     <div>
-      <button   >다시불러오기</button>
+      <button  onClick={fetchdata} >다시불러오기</button>
       <hr/>
       {posts.map(post => (
         <Post key={post.id} id={post.id} title={post.title} userId={post.userId} />

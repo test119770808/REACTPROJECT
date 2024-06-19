@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { createContext, useContext, useReducer } from "react";
 
+//2. 초기값 설정
 const initialState = {
   posts: {
     loading: false,
@@ -9,12 +10,11 @@ const initialState = {
   }  
 };
 
-
+// 1. reducer 생성
 function postsReducer(state, action) {
-  console.log(state);
+  // console.log(state);
   switch(action.type) {
     case 'LOADING':
-      console.log('loading');
       return {
         posts: {
           loading: true,
@@ -23,7 +23,6 @@ function postsReducer(state, action) {
         }
       };
     case 'SUCCESS':
-      console.log('success');
       return {
         posts: {
           loading: false,
@@ -32,7 +31,6 @@ function postsReducer(state, action) {
         } 
       };
     case 'ERROR':
-      console.log('error');
       return {
         posts: {
           loading: false,
@@ -45,12 +43,13 @@ function postsReducer(state, action) {
   }
 }
 
+// 3. Context API생성
 const PostsStateContext = createContext(null);
 const PostsDispatchContext = createContext(null);
 
+// 4. provider 생설 및 설정
 export function PostsProvider({children}) {
   const [state, dispatch] = useReducer(postsReducer, initialState);
-  // console.log(state);
   return (
     <PostsStateContext.Provider value={state}>
       <PostsDispatchContext.Provider value={dispatch}>
@@ -60,6 +59,7 @@ export function PostsProvider({children}) {
   );
 }
 
+// 5. useContext사용하여 불러오기
 export function usePostsState() {
   const state = useContext(PostsStateContext);
   if (!state) {
@@ -79,9 +79,9 @@ export function usePostsDispatch() {
 export async function postsFetch (dispatch){
   dispatch({type:'LOADING'});
   try{
-    const response = await axios.get('https://jsonplaceholder.typicode.com/posts1');
-    console.log('axios');
-    console.log(response);
+    const response = await axios.get('https://jsonplaceholder.typicode.com/posts');
+    // console.log('axios');
+    // console.log(response);
     dispatch({type:'SUCCESS', posts: response.data.filter(t => t.id <= 20) });
   }catch(e) {
     dispatch({type:'ERROR', error:e});
