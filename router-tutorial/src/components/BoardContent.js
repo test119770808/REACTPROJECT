@@ -1,8 +1,10 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 
-function BoardContent() {
+function BoardContent(props) {
   let {num} = useParams();
+
+  console.log(props.id);
 
   return (
     <div>

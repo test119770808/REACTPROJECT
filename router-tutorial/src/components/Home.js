@@ -1,25 +1,27 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Header from "./Header";
 
 function Home() {
 
   return (
     <div>
-      <ul>
+      {/* <ul> */}
         {/* 
           Link 태그를 이용해서 다른 페이지 이동. 
           to 속성을 이용하여 연결할 주소를 적습니다. 
           어느 컴포넌트든 사용이 가능함. 
           ** Routes 사이에있는 경로를 이동할 때 사용함.
          */}
-        <li><Link to="/">홈</Link></li>
+        {/* <li><Link to="/">홈</Link></li>
         <li><Link to="/user">회원페이지(Link)</Link></li>
         <li><Link to="/info">정보페이지</Link></li>
         <li><a href="/user">회원페이지(a태그)</a></li>
         <li>
           <Link to="/user?id=aaa111&key=1">회원페이지(쿼리 param 처리...)</Link>
-        </li>
-      </ul>
+        </li> */}
+      {/* </ul> */}
+      <Header />
       <hr />
       <ul>
         <li>
