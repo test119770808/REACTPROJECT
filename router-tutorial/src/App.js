@@ -4,14 +4,22 @@ import { Route, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import User from './components/User';
 import Info from './components/Info';
+import Board from './components/Board';
+import BoardContent from './components/BoardContent';
 
 function App() {
   return (
     <Routes>  
       <Route path='/' Component={Home} />
       <Route path='/user' element={<User />} />
+      <Route path='/user/:username' Component={User} />
       <Route path='/info' element={<Info />} />
       <Route path='/info/:num' element={<Info />} />
+      {/* 중첩 */}
+      <Route path='/board' element={<Board />} >
+        <Route path=':num' element={<BoardContent />} />
+      </Route>
+      
     </Routes>
   );
 }
