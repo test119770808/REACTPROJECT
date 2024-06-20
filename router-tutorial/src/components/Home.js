@@ -33,6 +33,9 @@ function Home() {
         <li>
         <Link to='/info/3'>3번 info</Link>
         </li>
+        <li>
+          <Link to='/mypage'>마이페이지로 이동</Link>
+        </li>
       </ul>
       <h2>홈 페이지</h2>
       <p>지금 보여지는 곳은 홈입니다. 사이트 대문이죠!!!</p>
