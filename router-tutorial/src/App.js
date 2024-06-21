@@ -1,6 +1,6 @@
 import logo from './logo.svg';
 import './App.css';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './components/Home';
 import User from './components/User';
 import Info from './components/Info';
@@ -10,9 +10,18 @@ import Profiles from './components/Profiles';
 import MyPage from './components/MyPage';
 
 function App() {
+
+  const {pathname} = useLocation();
+
   return (
     <>
-      <Routes>  
+      <Routes>
+        <Route path='/*' element={
+          <div>
+            <h1>HTTP 404</h1>
+            <h2>{pathname} -이 페이지는 존재하지 않습니다.</h2>
+          </div>
+        } />  
         <Route path='/' Component={Home} />
         <Route path='/mypage' element={<MyPage />} />
         <Route path='/user' element={<User />} />
