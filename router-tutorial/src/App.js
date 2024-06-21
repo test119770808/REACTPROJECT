@@ -16,12 +16,6 @@ function App() {
   return (
     <>
       <Routes>
-        <Route path='/*' element={
-          <div>
-            <h1>HTTP 404</h1>
-            <h2>{pathname} -이 페이지는 존재하지 않습니다.</h2>
-          </div>
-        } />  
         <Route path='/' Component={Home} />
         <Route path='/mypage' element={<MyPage />} />
         <Route path='/user' element={<User />} />
@@ -36,6 +30,12 @@ function App() {
           <Route path=':username' element={<User />} />
         </Route> */}
         <Route path='/profiles/*' element={<Profiles />} />
+        <Route path='/*' element={  /* Switch(v5)를 사용했을 때 이 경로는 마지막에 작성...  */
+          <div>
+            <h1>HTTP 404</h1>
+            <h2>{pathname} -이 페이지는 존재하지 않습니다.</h2>
+          </div>
+        } />  
         
       </Routes>
     </>
