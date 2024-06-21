@@ -4,6 +4,7 @@ import Greetings from './components/Greetings';
 import Counter from './components/Counter';
 import MyForm from './components/MyForm';
 import CounterReducer from './components/CounterReducer';
+import ReducerSample from './components/ReducerSample';
 
 function App() {
   const onClick = (name: string) => {
@@ -23,6 +24,8 @@ function App() {
       <MyForm onSubmit={onSubmit}/>
       <hr />
       <CounterReducer />
+      <hr />
+      <ReducerSample />
     </div>
   );
 }
