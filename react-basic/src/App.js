@@ -15,6 +15,7 @@ import UserList from './Array/UserList';
 import CreateUser from './Array/CreateUser';
 import HookEffect from './Hooks/HookEffect';
 import HookRef from './Hooks/HookRef';
+import InputSample2 from './Array/InputSample2';
 
 // active가 활성화된 사용자를 세는 함수. 
 function countActiveUsers(users) {
@@ -180,6 +181,7 @@ function App() {
       {/*   </div>
         <div style={style}>Hello World!! </div> */} {/* 하나의 태그로 묶여야 합니다....  */}
       {/* </Wrapper> */}
+      <InputSample2 />
     </>
   );
 }

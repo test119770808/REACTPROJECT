@@ -14,6 +14,7 @@ function MyForm({onSubmit}:MyFormProps) {
 
   const {name, description} = form;
 
+  // React.ChangeEvent<HTMLInputElement>
   const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     // e값은 무엇? 모르면 any... 
     const {name, value} = e.target;

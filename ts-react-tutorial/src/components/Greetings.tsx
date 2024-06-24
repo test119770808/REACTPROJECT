@@ -2,10 +2,11 @@ import React from "react";
 
 type GreetingsProps = {
   name: string;
-  mark: string;
-  optional?: string;
+  mark: string;           
+  optional?: string;        // 옵셔널 체이닝
   onClick: (name: string) => void;  
   // 매개변수 name(문자열)을 받고, 반환값 없어요
+  // ! : non-null Assertion(논 널 어서션)
 };
 /* React.FC 사용시 특징
   1. children 값이 props에 기본적으로 들어가 있음. 

@@ -5,6 +5,8 @@ import Counter from './components/Counter';
 import MyForm from './components/MyForm';
 import CounterReducer from './components/CounterReducer';
 import ReducerSample from './components/ReducerSample';
+import { SampleProvider } from './SampleContext';
+import ReducerSample2 from './components/ReducerSample2';
 
 function App() {
   const onClick = (name: string) => {
@@ -17,7 +19,7 @@ function App() {
 
   return (
     <div>
-      <Greetings name="tim" onClick={onClick} />
+      {/* <Greetings name="tim" onClick={onClick} />
       <hr />
       <Counter />
       <hr />
@@ -25,7 +27,10 @@ function App() {
       <hr />
       <CounterReducer />
       <hr />
-      <ReducerSample />
+      <ReducerSample /> */}
+      <SampleProvider>
+        <ReducerSample2 />
+      </SampleProvider>
     </div>
   );
 }
