@@ -1,4 +1,9 @@
+import { title } from "process";
 import Navigation from "../components/navigation"
+
+export const metadata = {
+  title: "About Us",
+};
 
 export default function AboutUs() {
   return (

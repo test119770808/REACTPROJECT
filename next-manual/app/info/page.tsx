@@ -1,5 +1,9 @@
 import Navigation from "../components/navigation"
 
+export const metadata = {
+  title: "info",
+}
+
 export default function Info() {
   return(
     <div>

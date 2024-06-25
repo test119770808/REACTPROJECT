@@ -1,4 +1,8 @@
-import Navigation from "./components/navigation"
+import Navigation from "../components/navigation"
+
+export const metadata = {
+  title: 'home',
+}
 
 export default function Home() {
   return(

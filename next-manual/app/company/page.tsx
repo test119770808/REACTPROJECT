@@ -1,3 +1,7 @@
+export const metadata = {
+  title: "company",
+}
+
 export default function Company() {
   return(
     <div>
