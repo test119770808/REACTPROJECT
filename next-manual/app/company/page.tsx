@@ -1,5 +1,7 @@
 export default function Company() {
   return(
-    <h1>Company~~~ !!!</h1>
+    <div>
+      <h1>Company~~~ !!!</h1>
+    </div>
   );
 }
