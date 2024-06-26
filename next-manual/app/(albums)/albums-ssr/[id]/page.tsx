@@ -3,6 +3,7 @@
 
 import { Suspense } from "react";
 import AlbumInfo from "../../../components/Album-info";
+import AlbumPhotos from "../../../components/AlbumPhotos";
 
 // import { API_URL } from "../page";
 
@@ -46,6 +47,10 @@ export default async function AlbumDetail({
       <Suspense fallback={<h1>Loading Album info.... </h1>}>
         <AlbumInfo id={id} />
       </Suspense>
+      <Suspense fallback={<h1>Loading Photos.... </h1>} >
+        <AlbumPhotos id={id} />
+      </Suspense>
+
     </div>
   )
 
