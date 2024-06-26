@@ -14,7 +14,7 @@ export default function Page() {
   const getAlbums = async () => {
     const response =  await fetch("https://jsonplaceholder.typicode.com/albums");
     const json = await response.json();
-    // console.log(json);
+    console.log(json);
     setAlbums(json);
     setIsLoading(false);  // 상태 변경... 
   }
