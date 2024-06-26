@@ -10,7 +10,7 @@ async function getAlbums() {
   await new Promise((resolve)=> setTimeout(resolve, 5000));
   const response = await fetch(API_URL+'albums');
   const json = await response.json();
-  console.log("getAlbums");
+  // console.log("getAlbums");
   return json;
 }
 
